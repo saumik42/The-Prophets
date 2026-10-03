@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Prophets | AKS Ilm</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+    }
+
+    .prophets-app {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 22px 16px 35px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .intro h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      color: #163d6b;
+    }
+
+    .intro p {
+      margin: 0 auto;
+      max-width: 700px;
+      line-height: 1.6;
+      color: #5b6470;
+      font-size: 15px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    #search {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ccd5df;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    #search:focus {
+      border-color: #3976b8;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid #e1e7ee;
+      border-radius: 14px;
+      padding: 18px;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.045);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 13px;
+    }
+
+    .name {
+      margin: 0;
+      font-size: 19px;
+      color: #163d6b;
+    }
+
+    .english {
+      display: block;
+      margin-top: 3px;
+      font-size: 13px;
+      color: #7a8490;
+      font-weight: normal;
+    }
+
+    .arabic {
+      direction: rtl;
+      font-size: 26px;
+      color: #163d6b;
+      white-space: nowrap;
+    }
+
+    .glimpse-label {
+      margin: 0 0 4px;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #6d7783;
+    }
+
+    .glimpse {
+      margin: 0 0 13px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .reference {
+      font-size: 13px;
+      color: #3976b8;
+      font-weight: bold;
+    }
+
+    .empty {
+      display: none;
+      text-align: center;
+      padding: 30px 10px;
+      color: #6d7783;
+    }
+
+    @media (max-width: 650px) {
+      .prophets-app {
+        padding: 18px 12px 28px;
+      }
+
+      .intro h1 {
+        font-size: 25px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="prophets-app">
+
+    <div class="intro">
+      <h1>The Prophets</h1>
+      <p>
+        Explore the 25 prophets mentioned by name in the Qur’an,
+        with their Arabic and English names, a brief glimpse from
+        their story, and a Qur’anic reference.
+      </p>
+    </div>
+
+    <div class="controls">
+      <input
+        id="search"
+        type="text"
+        placeholder="Search a prophet..."
+        aria-label="Search prophets"
+      >
+    </div>
+
+    <div id="grid" class="grid"></div>
+
+    <div id="empty" class="empty">
+      No prophet found.
+    </div>
+
+  </main>
+
+  <script>
+
+    /* =========================================================
+       THE PROPHETS — CONTENT
+       Future content changes can be made in this section.
+       ========================================================= */
+
+    const prophets = [
+      {
+        name: "Ādam",
+        arabic: "آدم",
+        english: "Adam",
+        glimpse: "Allah taught him the names of all things.",
+        reference: "Qur’an 2:31"
+      },
+      {
+        name: "Idrīs",
+        arabic: "إدريس",
+        english: "Enoch",
+        glimpse: "Allah raised him to a high position.",
+        reference: "Qur’an 19:57"
+      },
+      {
+        name: "Nūḥ",
+        arabic: "نوح",
+        english: "Noah",
+        glimpse: "Allah commanded him to build the Ark.",
+        reference: "Qur’an 11:37"
+      },
+      {
+        name: "Hūd",
+        arabic: "هود",
+        english: "Hud",
+        glimpse: "He called the people of ʿĀd to worship Allah alone.",
+        reference: "Qur’an 11:50"
+      },
+      {
+        name: "Saleh",
+        arabic: "صالح",
+        english: "Saleh",
+        glimpse: "Allah gave his people the she-camel as a sign.",
+        reference: "Qur’an 7:73"
+      },
+      {
+        name: "Ibrāhīm",
+        arabic: "إبراهيم",
+        english: "Abraham",
+        glimpse: "He built the Kaʿbah with his son Ismael (AS).",
+        reference: "Qur’an 2:127"
+      },
+      {
+        name: "Lūṭ",
+        arabic: "لوط",
+        english: "Lot",
+        glimpse: "Allah saved him from a people who committed wicked deeds.",
+        reference: "Qur’an 21:74"
+      },
+      {
+        name: "Ismael",
+        arabic: "إسماعيل",
+        english: "Ishmael",
+        glimpse: "He helped his father Ibrāhīm (AS) build the Kaʿbah.",
+        reference: "Qur’an 2:127"
+      },
+      {
+        name: "Isḥāq",
+        arabic: "إسحاق",
+        english: "Isaac",
+        glimpse: "Allah gave glad tidings of him as a righteous prophet.",
+        reference: "Qur’an 37:112"
+      },
+      {
+        name: "Yaʿqūb",
+        arabic: "يعقوب",
+        english: "Jacob",
+        glimpse: "He remained patient through his separation from his son Yūsuf (AS).",
+        reference: "Qur’an 12:83–86"
+      },
+      {
+        name: "Yūsuf",
+        arabic: "يوسف",
+        english: "Joseph",
+        glimpse: "He dreamed of eleven stars, the sun and the moon prostrating to him.",
+        reference: "Qur’an 12:4"
+      },
+      {
+        name: "Ayyūb",
+        arabic: "أيوب",
+        english: "Job",
+        glimpse: "He called upon Allah during a time of great hardship.",
+        reference: "Qur’an 21:83"
+      },
+      {
+        name: "Shuaib",
+        arabic: "شعيب",
+        english: "Shuaib",
+        glimpse: "He called his people to give full measure and weight.",
+        reference: "Qur’an 7:85"
+      },
+      {
+        name: "Mūsā",
+        arabic: "موسى",
+        english: "Moses",
+        glimpse: "Allah spoke to him from the blessed valley.",
+        reference: "Qur’an 28:30"
+      },
+      {
+        name: "Hārūn",
+        arabic: "هارون",
+        english: "Aaron",
+        glimpse: "Allah appointed him to support his brother Mūsā (AS).",
+        reference: "Qur’an 20:29–36"
+      },
+      {
+        name: "Dhul-Kifl",
+        arabic: "ذو الكفل",
+        english: "Dhul-Kifl",
+        glimpse: "Allah mentions him among those who were steadfast.",
+        reference: "Qur’an 21:85"
+      },
+      {
+        name: "Dāwūd",
+        arabic: "داوود",
+        english: "David",
+        glimpse: "Allah made iron pliable for him.",
+        reference: "Qur’an 34:10"
+      },
+      {
+        name: "Sulaiman",
+        arabic: "سليمان",
+        english: "Solomon",
+        glimpse: "Allah taught him the communication of birds.",
+        reference: "Qur’an 27:16"
+      },
+      {
+        name: "Ilyās",
+        arabic: "إلياس",
+        english: "Elijah",
+        glimpse: "He called his people to worship Allah instead of Baʿl.",
+        reference: "Qur’an 37:123–126"
+      },
+      {
+        name: "Al-Yasaʿ",
+        arabic: "اليسع",
+        english: "Elisha",
+        glimpse: "Allah mentions him among His chosen servants.",
+        reference: "Qur’an 38:48"
+      },
+      {
+        name: "Yūnus",
+        arabic: "يونس",
+        english: "Jonah",
+        glimpse: "He called upon Allah from within the darknesses.",
+        reference: "Qur’an 21:87"
+      },
+      {
+        name: "Zakariya",
+        arabic: "زكريا",
+        english: "Zechariah",
+        glimpse: "He prayed to Allah for righteous offspring.",
+        reference: "Qur’an 3:38"
+      },
+      {
+        name: "Yaḥyā",
+        arabic: "يحيى",
+        english: "John",
+        glimpse: "Allah gave him wisdom while he was still a child.",
+        reference: "Qur’an 19:12"
+      },
+      {
+        name: "ʿĪsā",
+        arabic: "عيسى",
+        english: "Jesus",
+        glimpse: "He was born miraculously to Maryam without a father.",
+        reference: "Qur’an 3:45–47"
+      },
+      {
+        name: "Muḥammad",
+        arabic: "محمد",
+        english: "Muhammad",
+        glimpse: "Allah describes him as His Messenger and the seal of the prophets.",
+        reference: "Qur’an 33:40"
+      }
+    ];
+
+    const grid = document.getElementById("grid");
+    const search = document.getElementById("search");
+    const empty = document.getElementById("empty");
+
+    function honorific(name) {
+      return name === "Muḥammad" ? "SAW" : "AS";
+    }
+
+    function render(list) {
+      grid.innerHTML = "";
+
+      if (list.length === 0) {
+        empty.style.display = "block";
+        return;
+      }
+
+      empty.style.display = "none";
+
+      list.forEach(prophet => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        card.innerHTML = `
+          <div class="card-top">
+            <div>
+              <h2 class="name">
+                ${prophet.name} (${honorific(prophet.name)})
+                <span class="english">${prophet.english}</span>
+              </h2>
+            </div>
+
+            <div class="arabic">
+              ${prophet.arabic}
+            </div>
+          </div>
+
+          <p class="glimpse-label">A Glimpse</p>
+          <p class="glimpse">${prophet.glimpse}</p>
+
+          <div class="reference">${prophet.reference}</div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    search.addEventListener("input", () => {
+      const query = search.value.toLowerCase().trim();
+
+      const filtered = prophets.filter(prophet =>
+        prophet.name.toLowerCase().includes(query) ||
+        prophet.english.toLowerCase().includes(query) ||
+        prophet.arabic.includes(query)
+      );
+
+      render(filtered);
+    });
+
+    render(prophets);
+
+  </script>
+
+</body>
+</html>
