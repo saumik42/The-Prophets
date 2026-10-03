@@ -6,30 +6,25 @@
 <title>The Prophets | AKS Ilm</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
 
-:root {
-  --navy: #173f6d;
-  --blue: #326d9f;
-  --blue-mid: #7197b8;
-  --blue-light: #d9e7f2;
-  --blue-pale: #f2f7fb;
-  --text: #304255;
-  --muted: #748392;
-  --border: #cfdeea;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--text);
+  color: #27313b;
+
   background:
-    radial-gradient(circle at 8% 5%, rgba(70,125,174,.09), transparent 24%),
-    radial-gradient(circle at 94% 28%, rgba(90,145,190,.07), transparent 22%),
-    radial-gradient(circle at 12% 72%, rgba(70,125,174,.055), transparent 20%),
-    #ffffff;
+    radial-gradient(circle at 8% 5%, rgba(91,124,108,.07), transparent 22%),
+    radial-gradient(circle at 92% 26%, rgba(173,128,92,.06), transparent 22%),
+    radial-gradient(circle at 10% 75%, rgba(91,104,145,.05), transparent 22%),
+    #fffdf9;
 }
 
 .app {
@@ -40,19 +35,19 @@ body {
 }
 
 
-/* ==========================================
+/* =========================================================
    INTRO
-   ========================================== */
+   ========================================================= */
 
 .intro {
-  text-align: center;
   max-width: 720px;
-  margin: 0 auto 25px;
+  margin: 0 auto 26px;
+  text-align: center;
 }
 
 .title {
   margin: 0;
-  color: var(--navy);
+  color: #263c35;
   font-size: 34px;
   line-height: 1.2;
 }
@@ -60,7 +55,7 @@ body {
 .description {
   max-width: 670px;
   margin: 12px auto 0;
-  color: #667687;
+  color: #69736e;
   font-size: 15px;
   line-height: 1.65;
 }
@@ -69,8 +64,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  margin-top: 18px;
+  gap: 10px;
+  margin-top: 19px;
 }
 
 .title-decoration::before,
@@ -78,90 +73,117 @@ body {
   content: "";
   width: 42px;
   height: 1px;
-  background: #b8cad9;
+  background: #c7c4b8;
 }
 
 .title-diamond {
   width: 8px;
   height: 8px;
-  border: 1.5px solid #648baa;
+  border: 1.5px solid #798b7d;
   transform: rotate(45deg);
 }
 
 
-/* ==========================================
+/* =========================================================
    JOURNEY START
-   ========================================== */
+   ========================================================= */
 
 .start {
+  margin: 30px auto 30px;
   text-align: center;
-  margin: 30px auto 36px;
 }
 
 .start-label {
-  color: #7891a7;
+  color: #7b827d;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 2.2px;
 }
 
-.start-leaf {
-  margin-top: 8px;
-  font-size: 18px;
+.start-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  margin: 10px auto 0;
+
+  border: 1px solid #b9b8ac;
+  border-radius: 50%;
+
+  color: #6c8174;
+  background: #fffdf9;
+
+  font-size: 12px;
 }
 
 
-/* ==========================================
+/* =========================================================
    JOURNEY
-   ========================================== */
+   ========================================================= */
 
 .journey {
   position: relative;
   max-width: 760px;
   margin: 0 auto;
-  padding: 10px 0 12px;
+  padding: 8px 0 12px;
 }
 
 
-/* CONTINUOUS BACKGROUND PATH */
+/* =========================================================
+   CONTINUOUS PATH
+   ========================================================= */
 
 .path-svg {
   position: absolute;
   top: 0;
   left: 0;
+
   width: 100%;
   height: 100%;
-  z-index: 0;
+
   overflow: visible;
   pointer-events: none;
+  z-index: 0;
 }
 
-.journey-path-shadow {
+.path-shadow {
   fill: none;
-  stroke: rgba(50,109,159,.08);
-  stroke-width: 9;
+  stroke: rgba(91,106,95,.07);
+  stroke-width: 10;
   stroke-linecap: round;
 }
 
-.journey-path {
+.path-line {
   fill: none;
-  stroke: #9eb9cf;
-  stroke-width: 2.2;
+  stroke: #b2b9b0;
+  stroke-width: 2.1;
   stroke-linecap: round;
 }
 
 
-/* ==========================================
-   EACH PROPHET
-   ========================================== */
+/* =========================================================
+   STEP
+   ========================================================= */
 
 .step {
+  --accent: #537a68;
+  --accent-dark: #355746;
+  --soft: #edf5f0;
+  --soft2: #f8fbf9;
+  --marker: #6f9482;
+
   position: relative;
-  width: 100%;
-  min-height: 205px;
-  z-index: 2;
+
   display: flex;
   align-items: center;
+
+  width: 100%;
+  min-height: 205px;
+
+  z-index: 2;
 }
 
 .step.left {
@@ -173,24 +195,29 @@ body {
 }
 
 
-/* ==========================================
-   JOURNEY MARKER
-   ========================================== */
+/* =========================================================
+   NUMBERED PATH MARKER
+   ========================================================= */
 
 .marker {
   position: absolute;
   top: 50%;
-  width: 36px;
-  height: 36px;
-  transform: translateY(-50%) rotate(45deg);
 
-  background: #ffffff;
-  border: 2px solid #87a8c2;
-  border-radius: 9px;
+  width: 38px;
+  height: 38px;
+
+  transform:
+    translateY(-50%)
+    rotate(45deg);
+
+  border: 2px solid var(--marker);
+  border-radius: 10px;
+
+  background: #fffdf9;
 
   box-shadow:
-    0 0 0 6px rgba(255,255,255,.88),
-    0 4px 12px rgba(37,77,113,.12);
+    0 0 0 6px rgba(255,253,249,.92),
+    0 5px 14px rgba(50,55,51,.12);
 
   z-index: 5;
 }
@@ -198,13 +225,14 @@ body {
 .marker span {
   position: absolute;
   inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
   transform: rotate(-45deg);
 
-  color: #527a9c;
+  color: var(--accent-dark);
   font-size: 10px;
   font-weight: 700;
 }
@@ -218,53 +246,65 @@ body {
 }
 
 
-/* ==========================================
-   SMALL BRANCH FROM PATH TO CARD
-   ========================================== */
+/* =========================================================
+   BRANCH TO CARD
+   ========================================================= */
 
 .branch {
   position: absolute;
   top: 50%;
-  height: 1px;
-  background: linear-gradient(90deg,#a9bfd2,#d4e1eb);
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--marker),
+      rgba(190,190,180,.5)
+    );
+
+  opacity: .65;
+
   z-index: 1;
 }
 
 .step.left .branch {
-  left: 43%;
-  width: 8%;
+  left: 42%;
+  width: 9%;
 }
 
 .step.right .branch {
-  right: 43%;
-  width: 8%;
+  right: 42%;
+  width: 9%;
 }
 
 
-/* ==========================================
+/* =========================================================
    CARD
-   ========================================== */
+   ========================================================= */
 
 .card {
   position: relative;
-  width: 43%;
-  min-height: 160px;
 
-  padding: 23px 22px 19px;
+  width: 43%;
+  min-height: 166px;
+
+  padding: 23px 22px 20px;
+
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, #ffffff);
+  border-radius: 23px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(244,249,252,.98),
-      rgba(255,255,255,1) 58%
+      var(--soft) 0%,
+      var(--soft2) 48%,
+      #ffffff 100%
     );
 
-  border: 1px solid var(--border);
-  border-radius: 22px;
-
   box-shadow:
-    0 8px 25px rgba(28,68,105,.09),
-    inset 0 1px 0 rgba(255,255,255,1);
+    0 8px 25px rgba(42,48,44,.10),
+    inset 0 1px 0 rgba(255,255,255,.95);
 
   cursor: pointer;
   overflow: hidden;
@@ -275,249 +315,402 @@ body {
     border-color .25s ease;
 }
 
-@media (hover:hover) and (pointer:fine) {
-  .card:hover {
-    transform: translateY(-4px);
-    border-color: #9db7cc;
-    box-shadow:
-      0 13px 31px rgba(28,68,105,.14),
-      inset 0 1px 0 #fff;
-  }
-}
 
-.card:focus-visible {
-  outline: 3px solid rgba(50,109,159,.22);
-  outline-offset: 4px;
-}
+/* COLOUR STRIP */
 
-
-/* ==========================================
-   GEOMETRIC DECORATION
-   ========================================== */
-
-.pattern {
-  position: absolute;
-  width: 92px;
-  height: 92px;
-  top: -38px;
-  right: -38px;
-  opacity: .42;
-  pointer-events: none;
-}
-
-.pattern-one,
-.pattern-two,
-.pattern-three {
-  position: absolute;
-  border: 1px solid #aac0d3;
-  transform: rotate(45deg);
-}
-
-.pattern-one {
-  width: 65px;
-  height: 65px;
-  left: 13px;
-  top: 13px;
-}
-
-.pattern-two {
-  width: 43px;
-  height: 43px;
-  left: 24px;
-  top: 24px;
-}
-
-.pattern-three {
-  width: 21px;
-  height: 21px;
-  left: 35px;
-  top: 35px;
-}
-
-
-/* SECOND DECORATIVE ACCENT */
-
-.card::after {
+.card::before {
   content: "";
+
   position: absolute;
-  bottom: 0;
-  left: 25%;
-  width: 50%;
-  height: 3px;
+  top: 0;
+  left: 17%;
+  right: 17%;
+
+  height: 4px;
+
+  border-radius: 0 0 10px 10px;
 
   background:
     linear-gradient(
       90deg,
       transparent,
-      rgba(74,125,169,.35),
+      var(--accent),
       transparent
     );
+
+  opacity: .8;
 }
 
 
-/* ==========================================
-   CARD CONTENT
-   ========================================== */
+/* LOWER ORNAMENT */
+
+.card::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  left: 28%;
+
+  width: 44%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--accent),
+      transparent
+    );
+
+  opacity: .35;
+}
+
+
+@media (hover:hover) and (pointer:fine) {
+
+  .card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+      0 14px 32px rgba(42,48,44,.15),
+      0 0 0 2px color-mix(in srgb, var(--accent) 9%, transparent);
+  }
+
+}
+
+.card:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   GEOMETRIC CORNER MOTIF
+   ========================================================= */
+
+.pattern {
+  position: absolute;
+
+  width: 105px;
+  height: 105px;
+
+  top: -44px;
+  right: -44px;
+
+  opacity: .30;
+
+  pointer-events: none;
+}
+
+.pattern span {
+  position: absolute;
+
+  border: 1px solid var(--accent);
+
+  transform: rotate(45deg);
+}
+
+.pattern-1 {
+  width: 74px;
+  height: 74px;
+
+  top: 15px;
+  left: 15px;
+}
+
+.pattern-2 {
+  width: 50px;
+  height: 50px;
+
+  top: 27px;
+  left: 27px;
+}
+
+.pattern-3 {
+  width: 25px;
+  height: 25px;
+
+  top: 39px;
+  left: 39px;
+}
+
+
+/* =========================================================
+   MAIN CARD CONTENT
+   ========================================================= */
 
 .card-main {
+  position: relative;
   text-align: center;
+  z-index: 2;
 }
 
 .prophet-name {
   margin: 0;
-  color: var(--navy);
+
+  color: var(--accent-dark);
+
   font-size: 21px;
   line-height: 1.3;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ARABIC MEDALLION
+   ========================================================= */
+
+.arabic-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 10px auto 3px;
+}
+
+.arabic-medallion {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 64px;
+  min-height: 52px;
+
+  padding: 4px 12px;
+}
+
+.arabic-medallion::before {
+  content: "";
+
+  position: absolute;
+  inset: 2px;
+
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+
+  border-radius: 50% 42% 50% 42%;
+
+  transform: rotate(8deg);
+
+  background:
+    color-mix(in srgb, var(--soft) 75%, white);
 }
 
 .arabic {
-  margin-top: 8px;
-  color: #315c80;
-  font-size: 31px;
+  position: relative;
+
+  color: var(--accent-dark);
+
+  font-size: 30px;
   line-height: 1.35;
+
   direction: rtl;
+
+  z-index: 1;
 }
 
 .english {
   margin-top: 2px;
-  color: #7b8895;
+
+  color: #727b76;
+
   font-size: 14px;
   font-style: italic;
 }
+
+
+/* =========================================================
+   REVEAL CONTROL
+   ========================================================= */
 
 .reveal {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   gap: 7px;
 
   margin-top: 15px;
-  padding: 6px 10px;
+
+  padding: 7px 12px;
+
+  border:
+    1px solid
+    color-mix(in srgb, var(--accent) 20%, transparent);
 
   border-radius: 999px;
-  background: rgba(222,234,244,.55);
 
-  color: #507696;
+  background:
+    color-mix(in srgb, var(--soft) 76%, white);
+
+  color: var(--accent-dark);
+
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: .4px;
+  letter-spacing: .45px;
 }
 
-.arrow {
-  font-size: 13px;
+.reveal-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+
+  background:
+    color-mix(in srgb, var(--accent) 14%, transparent);
+
+  font-size: 10px;
+
   transition: transform .3s ease;
 }
 
 
-/* ==========================================
+/* =========================================================
    EXPANDED CONTENT
-   ========================================== */
+   ========================================================= */
 
 .details {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
+
   margin-top: 0;
 
   transition:
-    max-height .42s ease,
+    max-height .43s ease,
     opacity .3s ease,
     margin-top .3s ease;
 }
 
 .card.open {
-  border-color: #88a9c4;
+  transform: translateY(-3px);
 
-  background:
-    linear-gradient(
-      145deg,
-      #eef6fb,
-      #ffffff 64%
-    );
+  border-color:
+    color-mix(in srgb, var(--accent) 58%, white);
 
   box-shadow:
-    0 14px 34px rgba(28,68,105,.16),
-    0 0 0 3px rgba(70,125,174,.045);
+    0 16px 36px rgba(42,48,44,.16),
+    0 0 0 3px
+      color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 .card.open .details {
-  max-height: 290px;
+  max-height: 310px;
   opacity: 1;
+
   margin-top: 18px;
 }
 
-.card.open .arrow {
+.card.open .reveal-symbol {
   transform: rotate(180deg);
 }
+
+
+/* =========================================================
+   A GLIMPSE PANEL
+   ========================================================= */
 
 .details-box {
   position: relative;
 
-  padding: 15px 15px 14px;
+  padding: 16px 15px 14px;
+
+  border:
+    1px solid
+    color-mix(in srgb, var(--accent) 22%, white);
+
+  border-radius: 14px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(226,238,247,.72),
-      rgba(242,247,251,.82)
+      color-mix(in srgb, var(--soft) 88%, white),
+      rgba(255,255,255,.88)
     );
-
-  border: 1px solid #d3e2ed;
-  border-radius: 13px;
 
   text-align: left;
 }
 
-.details-box::before {
-  content: "✦";
+.details-ornament {
   position: absolute;
-  top: 10px;
-  right: 12px;
-  color: #adc2d3;
-  font-size: 11px;
+
+  top: 11px;
+  right: 13px;
+
+  color:
+    color-mix(in srgb, var(--accent) 60%, white);
+
+  font-size: 12px;
 }
 
 .glimpse-title {
-  margin: 0 0 6px;
-  color: #54728d;
+  margin: 0 0 7px;
+
+  color: var(--accent-dark);
+
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 1.1px;
+
   text-transform: uppercase;
 }
 
 .glimpse {
   margin: 0;
-  color: #34495c;
+
+  color: #39443f;
+
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.62;
 }
+
+
+/* =========================================================
+   QUR'AN BADGE
+   ========================================================= */
 
 .reference {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
 
-  margin-top: 12px;
-  padding: 6px 9px;
+  gap: 6px;
 
-  background: rgba(255,255,255,.9);
-  border: 1px solid #ccdce8;
-  border-radius: 8px;
+  margin-top: 13px;
 
-  color: #2e6b9f;
+  padding: 7px 10px;
+
+  border:
+    1px solid
+    color-mix(in srgb, var(--accent) 25%, white);
+
+  border-radius: 9px;
+
+  background: rgba(255,255,255,.88);
+
+  color: var(--accent-dark);
+
   font-size: 12px;
   font-weight: 700;
 }
 
+.book {
+  font-size: 13px;
+}
 
-/* ==========================================
+
+/* =========================================================
    JOURNEY END
-   ========================================== */
+   ========================================================= */
 
 .end {
+  margin: 27px auto 0;
+
   text-align: center;
-  margin: 26px auto 0;
 }
 
 .end-symbol {
@@ -525,37 +718,40 @@ body {
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
 
-  border: 1.5px solid #89a8c1;
+  border: 1px solid #aaa99d;
   border-radius: 50%;
 
-  color: #5e84a4;
-  font-size: 13px;
+  background: #fffdf9;
 
-  background: #fff;
+  color: #697b6e;
+
+  font-size: 13px;
 }
 
 .end-text {
   margin-top: 12px;
 
-  color: #8195a7;
+  color: #858982;
+
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 1.5px;
+
   text-transform: uppercase;
 }
 
 
-/* ==========================================
+/* =========================================================
    MOBILE
-   ========================================== */
+   ========================================================= */
 
 @media (max-width: 650px) {
 
   .app {
-    padding: 24px 10px 48px;
+    padding: 24px 9px 48px;
   }
 
   .title {
@@ -567,20 +763,15 @@ body {
   }
 
   .start {
-    margin-bottom: 26px;
+    margin-bottom: 23px;
   }
 
   .journey {
     padding-left: 22px;
   }
 
-  /*
-    Mobile becomes a subtle stepping journey rather
-    than wasting half the screen on alternating cards.
-  */
-
   .step {
-    min-height: 190px;
+    min-height: 195px;
   }
 
   .step.left,
@@ -588,24 +779,27 @@ body {
     justify-content: flex-start;
   }
 
-  .step:nth-of-type(odd) .card {
+  .step:nth-child(odd) .card {
     margin-left: 8%;
   }
 
-  .step:nth-of-type(even) .card {
+  .step:nth-child(even) .card {
     margin-left: 14%;
   }
 
   .card {
     width: 79%;
-    min-height: 154px;
-    padding: 21px 17px 18px;
-    border-radius: 19px;
+    min-height: 158px;
+
+    padding: 21px 16px 18px;
+
+    border-radius: 20px;
   }
 
   .marker {
-    width: 29px;
-    height: 29px;
+    width: 30px;
+    height: 30px;
+
     left: 0 !important;
     right: auto !important;
   }
@@ -617,7 +811,8 @@ body {
   .branch {
     left: 15px !important;
     right: auto !important;
-    width: 14% !important;
+
+    width: 15% !important;
   }
 
   .path-svg {
@@ -634,25 +829,28 @@ body {
   }
 
   .pattern {
-    opacity: .32;
+    opacity: .25;
   }
+
 }
 
 
-/* ==========================================
+/* =========================================================
    REDUCED MOTION
-   ========================================== */
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }
 
   .card,
   .details,
-  .arrow {
+  .reveal-symbol {
     transition: none;
   }
+
 }
 
 </style>
@@ -663,123 +861,226 @@ body {
 
 <main class="app">
 
-  <header class="intro">
+<header class="intro">
 
-    <h1 class="title">🌿 The Prophets</h1>
+  <h1 class="title">
+    🌿 The Prophets
+  </h1>
 
-    <p class="description">
-      Journey through the 25 prophets mentioned by name in the Qur’an.
-      Tap each prophet to reveal a brief glimpse from their story and
-      its Qur’anic reference.
-    </p>
+  <p class="description">
+    Journey through the 25 prophets mentioned by name in the Qur’an.
+    Tap each prophet to reveal a brief glimpse from their story and
+    its Qur’anic reference.
+  </p>
 
-    <div class="title-decoration" aria-hidden="true">
-      <span class="title-diamond"></span>
-    </div>
-
-  </header>
-
-
-  <div class="start">
-
-    <div class="start-label">
-      BEGIN THE JOURNEY
-    </div>
-
-    <div class="start-leaf" aria-hidden="true">
-      ◇
-    </div>
-
+  <div class="title-decoration" aria-hidden="true">
+    <span class="title-diamond"></span>
   </div>
 
-
-  <section
-    class="journey"
-    id="journey"
-    aria-label="Journey through the Prophets"
-  >
-
-    <!--
-      ONE CONTINUOUS FLOWING PATH.
-      This replaces all previous dotted connectors.
-    -->
-
-    <svg
-      class="path-svg"
-      viewBox="0 0 760 5125"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-
-      <path
-        class="journey-path-shadow"
-        d="
-          M380 70
-          C500 150 500 260 380 350
-          C260 440 260 550 380 640
-          C500 730 500 840 380 930
-          C260 1020 260 1130 380 1220
-          C500 1310 500 1420 380 1510
-          C260 1600 260 1710 380 1800
-          C500 1890 500 2000 380 2090
-          C260 2180 260 2290 380 2380
-          C500 2470 500 2580 380 2670
-          C260 2760 260 2870 380 2960
-          C500 3050 500 3160 380 3250
-          C260 3340 260 3450 380 3540
-          C500 3630 500 3740 380 3830
-          C260 3920 260 4030 380 4120
-          C500 4210 500 4320 380 4410
-          C260 4500 260 4610 380 4700
-          C500 4790 500 4900 380 5050
-        "
-      />
-
-      <path
-        class="journey-path"
-        d="
-          M380 70
-          C500 150 500 260 380 350
-          C260 440 260 550 380 640
-          C500 730 500 840 380 930
-          C260 1020 260 1130 380 1220
-          C500 1310 500 1420 380 1510
-          C260 1600 260 1710 380 1800
-          C500 1890 500 2000 380 2090
-          C260 2180 260 2290 380 2380
-          C500 2470 500 2580 380 2670
-          C260 2760 260 2870 380 2960
-          C500 3050 500 3160 380 3250
-          C260 3340 260 3450 380 3540
-          C500 3630 500 3740 380 3830
-          C260 3920 260 4030 380 4120
-          C500 4210 500 4320 380 4410
-          C260 4500 260 4610 380 4700
-          C500 4790 500 4900 380 5050
-        "
-      />
-
-    </svg>
-
-  </section>
+</header>
 
 
-  <footer class="end">
+<div class="start">
 
-    <div class="end-symbol" aria-hidden="true">
-      ✦
-    </div>
+  <div class="start-label">
+    BEGIN THE JOURNEY
+  </div>
 
-    <div class="end-text">
-      25 Prophets Mentioned by Name in the Qur’an
-    </div>
+  <div class="start-symbol" aria-hidden="true">
+    ✦
+  </div>
 
-  </footer>
+</div>
+
+
+<section
+  class="journey"
+  id="journey"
+  aria-label="Journey through the Prophets"
+>
+
+<svg
+  class="path-svg"
+  viewBox="0 0 760 5125"
+  preserveAspectRatio="none"
+  aria-hidden="true"
+>
+
+<path
+  class="path-shadow"
+  d="
+  M380 70
+  C500 150 500 260 380 350
+  C260 440 260 550 380 640
+  C500 730 500 840 380 930
+  C260 1020 260 1130 380 1220
+  C500 1310 500 1420 380 1510
+  C260 1600 260 1710 380 1800
+  C500 1890 500 2000 380 2090
+  C260 2180 260 2290 380 2380
+  C500 2470 500 2580 380 2670
+  C260 2760 260 2870 380 2960
+  C500 3050 500 3160 380 3250
+  C260 3340 260 3450 380 3540
+  C500 3630 500 3740 380 3830
+  C260 3920 260 4030 380 4120
+  C500 4210 500 4320 380 4410
+  C260 4500 260 4610 380 4700
+  C500 4790 500 4900 380 5050
+  "
+/>
+
+<path
+  class="path-line"
+  d="
+  M380 70
+  C500 150 500 260 380 350
+  C260 440 260 550 380 640
+  C500 730 500 840 380 930
+  C260 1020 260 1130 380 1220
+  C500 1310 500 1420 380 1510
+  C260 1600 260 1710 380 1800
+  C500 1890 500 2000 380 2090
+  C260 2180 260 2290 380 2380
+  C500 2470 500 2580 380 2670
+  C260 2760 260 2870 380 2960
+  C500 3050 500 3160 380 3250
+  C260 3340 260 3450 380 3540
+  C500 3630 500 3740 380 3830
+  C260 3920 260 4030 380 4120
+  C500 4210 500 4320 380 4410
+  C260 4500 260 4610 380 4700
+  C500 4790 500 4900 380 5050
+  "
+/>
+
+</svg>
+
+</section>
+
+
+<footer class="end">
+
+  <div class="end-symbol" aria-hidden="true">
+    ✦
+  </div>
+
+  <div class="end-text">
+    25 Prophets Mentioned by Name in the Qur’an
+  </div>
+
+</footer>
 
 </main>
 
 
 <script>
+
+/* =========================================================
+   CURATED CARD COLOURS
+
+   These intentionally cycle rather than generate random RGB
+   values so the page remains visually harmonious.
+   ========================================================= */
+
+const palettes = [
+
+  /* EMERALD */
+  {
+    accent:"#4f8068",
+    dark:"#315a47",
+    soft:"#e8f3ed",
+    soft2:"#f8fbf9",
+    marker:"#67947c"
+  },
+
+  /* AMBER */
+  {
+    accent:"#b5843e",
+    dark:"#795722",
+    soft:"#f8efd9",
+    soft2:"#fffaf0",
+    marker:"#c1985a"
+  },
+
+  /* TERRACOTTA */
+  {
+    accent:"#b56f58",
+    dark:"#7b4637",
+    soft:"#f7e9e3",
+    soft2:"#fff8f5",
+    marker:"#c28672"
+  },
+
+  /* INDIGO */
+  {
+    accent:"#6673a5",
+    dark:"#414d7d",
+    soft:"#eaecf6",
+    soft2:"#f9f9fd",
+    marker:"#7e89b5"
+  },
+
+  /* TEAL */
+  {
+    accent:"#4e8b88",
+    dark:"#306461",
+    soft:"#e5f2f1",
+    soft2:"#f7fbfa",
+    marker:"#69a09d"
+  },
+
+  /* PLUM */
+  {
+    accent:"#8a668b",
+    dark:"#624564",
+    soft:"#f1e8f1",
+    soft2:"#fcf8fc",
+    marker:"#9e7da0"
+  },
+
+  /* OLIVE */
+  {
+    accent:"#7c8951",
+    dark:"#566133",
+    soft:"#eef1e3",
+    soft2:"#fafbf6",
+    marker:"#929e69"
+  },
+
+  /* DUSTY ROSE */
+  {
+    accent:"#aa6978",
+    dark:"#774654",
+    soft:"#f6e8ec",
+    soft2:"#fff8fa",
+    marker:"#bd8190"
+  },
+
+  /* SLATE */
+  {
+    accent:"#647d89",
+    dark:"#405965",
+    soft:"#e8eff2",
+    soft2:"#f8fafb",
+    marker:"#7d949f"
+  },
+
+  /* SAND */
+  {
+    accent:"#a78a62",
+    dark:"#705b3e",
+    soft:"#f5eee3",
+    soft2:"#fcfaf6",
+    marker:"#b69c78"
+  }
+
+];
+
+
+/* =========================================================
+   PROPHETS CONTENT
+   ========================================================= */
 
 const prophets = [
 
@@ -1011,10 +1312,15 @@ reference:"Qur’an 33:40"
 ];
 
 
-const journey = document.getElementById("journey");
+/* =========================================================
+   BUILD JOURNEY
+   ========================================================= */
+
+const journey =
+  document.getElementById("journey");
 
 
-function closeOthers(current) {
+function closeOtherCards(current) {
 
   document
     .querySelectorAll(".card.open")
@@ -1023,7 +1329,11 @@ function closeOthers(current) {
       if (card !== current) {
 
         card.classList.remove("open");
-        card.setAttribute("aria-expanded","false");
+
+        card.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
       }
 
@@ -1034,19 +1344,19 @@ function closeOthers(current) {
 
 function toggleCard(card) {
 
-  const currentlyOpen =
+  const isOpen =
     card.classList.contains("open");
 
-  closeOthers(card);
+  closeOtherCards(card);
 
   card.classList.toggle(
     "open",
-    !currentlyOpen
+    !isOpen
   );
 
   card.setAttribute(
     "aria-expanded",
-    String(!currentlyOpen)
+    String(!isOpen)
   );
 
 }
@@ -1054,30 +1364,66 @@ function toggleCard(card) {
 
 prophets.forEach((prophet,index) => {
 
+  const palette =
+    palettes[index % palettes.length];
+
+
   const step =
     document.createElement("article");
+
 
   step.className =
     `step ${index % 2 === 0 ? "left" : "right"}`;
 
 
-  /* JOURNEY NUMBER */
+  /* APPLY THIS PROPHET'S COLOUR */
+
+  step.style.setProperty(
+    "--accent",
+    palette.accent
+  );
+
+  step.style.setProperty(
+    "--accent-dark",
+    palette.dark
+  );
+
+  step.style.setProperty(
+    "--soft",
+    palette.soft
+  );
+
+  step.style.setProperty(
+    "--soft2",
+    palette.soft2
+  );
+
+  step.style.setProperty(
+    "--marker",
+    palette.marker
+  );
+
+
+  /* NUMBER MARKER */
 
   const marker =
     document.createElement("div");
 
   marker.className = "marker";
 
-  marker.innerHTML =
-    `<span>${String(index + 1).padStart(2,"0")}</span>`;
-
   marker.setAttribute(
     "aria-hidden",
     "true"
   );
 
+  marker.innerHTML = `
+    <span>
+      ${String(index + 1).padStart(2,"0")}
+    </span>
+  `;
 
-  /* SMALL PATH BRANCH */
+
+  /* BRANCH */
 
   const branch =
     document.createElement("span");
@@ -1117,10 +1463,13 @@ prophets.forEach((prophet,index) => {
 
   card.innerHTML = `
 
-    <div class="pattern" aria-hidden="true">
-      <span class="pattern-one"></span>
-      <span class="pattern-two"></span>
-      <span class="pattern-three"></span>
+    <div
+      class="pattern"
+      aria-hidden="true"
+    >
+      <span class="pattern-1"></span>
+      <span class="pattern-2"></span>
+      <span class="pattern-3"></span>
     </div>
 
 
@@ -1130,12 +1479,22 @@ prophets.forEach((prophet,index) => {
         ${prophet.name} (${prophet.honorific})
       </h2>
 
-      <div
-        class="arabic"
-        lang="ar"
-      >
-        ${prophet.arabic}
+
+      <div class="arabic-wrap">
+
+        <div class="arabic-medallion">
+
+          <div
+            class="arabic"
+            lang="ar"
+          >
+            ${prophet.arabic}
+          </div>
+
+        </div>
+
       </div>
+
 
       <div class="english">
         ${prophet.english}
@@ -1149,7 +1508,7 @@ prophets.forEach((prophet,index) => {
         </span>
 
         <span
-          class="arrow"
+          class="reveal-symbol"
           aria-hidden="true"
         >
           ↓
@@ -1164,6 +1523,13 @@ prophets.forEach((prophet,index) => {
 
       <div class="details-box">
 
+        <span
+          class="details-ornament"
+          aria-hidden="true"
+        >
+          ✦
+        </span>
+
         <p class="glimpse-title">
           A Glimpse
         </p>
@@ -1172,9 +1538,20 @@ prophets.forEach((prophet,index) => {
           ${prophet.glimpse}
         </p>
 
+
         <div class="reference">
-          <span aria-hidden="true">📖</span>
-          ${prophet.reference}
+
+          <span
+            class="book"
+            aria-hidden="true"
+          >
+            📖
+          </span>
+
+          <span>
+            ${prophet.reference}
+          </span>
+
         </div>
 
       </div>
@@ -1210,7 +1587,9 @@ prophets.forEach((prophet,index) => {
 
 
   step.appendChild(marker);
+
   step.appendChild(branch);
+
   step.appendChild(card);
 
   journey.appendChild(step);
