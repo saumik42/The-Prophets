@@ -31,7 +31,7 @@ body {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 32px 16px 65px;
+  padding: 32px 16px 55px;
 }
 
 
@@ -89,7 +89,7 @@ body {
    ========================================================= */
 
 .start {
-  margin: 30px auto 30px;
+  margin: 30px auto 27px;
   text-align: center;
 }
 
@@ -128,7 +128,7 @@ body {
   position: relative;
   max-width: 760px;
   margin: 0 auto;
-  padding: 8px 0 12px;
+  padding: 8px 0 8px;
 }
 
 
@@ -181,7 +181,7 @@ body {
   align-items: center;
 
   width: 100%;
-  min-height: 205px;
+  min-height: 198px;
 
   z-index: 2;
 }
@@ -196,7 +196,7 @@ body {
 
 
 /* =========================================================
-   NUMBERED PATH MARKER
+   NUMBERED MARKER
    ========================================================= */
 
 .marker {
@@ -247,7 +247,7 @@ body {
 
 
 /* =========================================================
-   BRANCH TO CARD
+   BRANCH
    ========================================================= */
 
 .branch {
@@ -315,9 +315,6 @@ body {
     border-color .25s ease;
 }
 
-
-/* COLOUR STRIP */
-
 .card::before {
   content: "";
 
@@ -341,9 +338,6 @@ body {
   opacity: .8;
 }
 
-
-/* LOWER ORNAMENT */
-
 .card::after {
   content: "";
 
@@ -365,7 +359,6 @@ body {
   opacity: .35;
 }
 
-
 @media (hover:hover) and (pointer:fine) {
 
   .card:hover {
@@ -385,7 +378,7 @@ body {
 
 
 /* =========================================================
-   GEOMETRIC CORNER MOTIF
+   GEOMETRIC CORNER
    ========================================================= */
 
 .pattern {
@@ -436,7 +429,7 @@ body {
 
 
 /* =========================================================
-   MAIN CARD CONTENT
+   CARD CONTENT
    ========================================================= */
 
 .card-main {
@@ -600,7 +593,7 @@ body {
 }
 
 .card.open .details {
-  max-height: 310px;
+  max-height: 320px;
   opacity: 1;
 
   margin-top: 18px;
@@ -612,7 +605,7 @@ body {
 
 
 /* =========================================================
-   A GLIMPSE PANEL
+   A GLIMPSE
    ========================================================= */
 
 .details-box {
@@ -671,7 +664,7 @@ body {
 
 
 /* =========================================================
-   QUR'AN BADGE
+   CLICKABLE QUR'AN REFERENCE
    ========================================================= */
 
 .reference {
@@ -690,12 +683,32 @@ body {
 
   border-radius: 9px;
 
-  background: rgba(255,255,255,.88);
+  background: rgba(255,255,255,.9);
 
   color: var(--accent-dark);
 
   font-size: 12px;
   font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+.reference:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(40,45,42,.08);
+}
+
+.reference:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .book {
@@ -708,7 +721,8 @@ body {
    ========================================================= */
 
 .end {
-  margin: 27px auto 0;
+  max-width: 700px;
+  margin: 28px auto 0;
 
   text-align: center;
 }
@@ -734,13 +748,69 @@ body {
 .end-text {
   margin-top: 12px;
 
-  color: #858982;
+  color: #737a74;
 
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.35px;
 
   text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FINAL NOTE
+   ========================================================= */
+
+.reference-note {
+  position: relative;
+
+  max-width: 650px;
+
+  margin: 24px auto 0;
+  padding: 16px 18px;
+
+  border: 1px solid #dddcd2;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(248,246,239,.9),
+      rgba(255,255,255,.95)
+    );
+
+  color: #656c67;
+
+  font-size: 12.5px;
+  line-height: 1.65;
+
+  text-align: left;
+}
+
+.reference-note strong {
+  color: #405248;
+}
+
+.note-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  margin-right: 5px;
+
+  border-radius: 50%;
+
+  background: #edf1eb;
+
+  color: #657a6c;
+
+  font-size: 9px;
+
+  vertical-align: 1px;
 }
 
 
@@ -751,7 +821,7 @@ body {
 @media (max-width: 650px) {
 
   .app {
-    padding: 24px 9px 48px;
+    padding: 24px 9px 40px;
   }
 
   .title {
@@ -763,7 +833,9 @@ body {
   }
 
   .start {
-    margin-bottom: 23px;
+    margin:
+      24px auto
+      18px;
   }
 
   .journey {
@@ -771,7 +843,7 @@ body {
   }
 
   .step {
-    min-height: 195px;
+    min-height: 181px;
   }
 
   .step.left,
@@ -779,19 +851,19 @@ body {
     justify-content: flex-start;
   }
 
-  .step:nth-child(odd) .card {
+  .step:nth-of-type(odd) .card {
     margin-left: 8%;
   }
 
-  .step:nth-child(even) .card {
+  .step:nth-of-type(even) .card {
     margin-left: 14%;
   }
 
   .card {
     width: 79%;
-    min-height: 158px;
+    min-height: 153px;
 
-    padding: 21px 16px 18px;
+    padding: 20px 15px 17px;
 
     border-radius: 20px;
   }
@@ -832,6 +904,19 @@ body {
     opacity: .25;
   }
 
+  .end {
+    margin-top: 23px;
+  }
+
+  .reference-note {
+    margin-top: 20px;
+
+    padding: 14px 15px;
+
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
 }
 
 
@@ -847,7 +932,8 @@ body {
 
   .card,
   .details,
-  .reveal-symbol {
+  .reveal-symbol,
+  .reference {
     transition: none;
   }
 
@@ -868,8 +954,8 @@ body {
   </h1>
 
   <p class="description">
-    Journey through the 25 prophets mentioned by name in the Qur’an.
-    Tap each prophet to reveal a brief glimpse from their story and
+    Journey through the 25 Prophets mentioned by name in the Qur’an.
+    Tap each Prophet to reveal a brief glimpse from their story and
     its Qur’anic reference.
   </p>
 
@@ -969,6 +1055,24 @@ body {
     25 Prophets Mentioned by Name in the Qur’an
   </div>
 
+
+  <div class="reference-note">
+
+    <span
+      class="note-symbol"
+      aria-hidden="true"
+    >
+      i
+    </span>
+
+    <strong>Note:</strong>
+    Each Prophet includes one relevant Qur’anic reference specifically
+    connected to the fact highlighted above. This is not intended to be
+    an exhaustive reference, as many of the Prophets are mentioned in
+    other verses throughout the Qur’an as well.
+
+  </div>
+
 </footer>
 
 </main>
@@ -977,15 +1081,11 @@ body {
 <script>
 
 /* =========================================================
-   CURATED CARD COLOURS
-
-   These intentionally cycle rather than generate random RGB
-   values so the page remains visually harmonious.
+   CURATED COLOUR PALETTE
    ========================================================= */
 
 const palettes = [
 
-  /* EMERALD */
   {
     accent:"#4f8068",
     dark:"#315a47",
@@ -994,7 +1094,6 @@ const palettes = [
     marker:"#67947c"
   },
 
-  /* AMBER */
   {
     accent:"#b5843e",
     dark:"#795722",
@@ -1003,7 +1102,6 @@ const palettes = [
     marker:"#c1985a"
   },
 
-  /* TERRACOTTA */
   {
     accent:"#b56f58",
     dark:"#7b4637",
@@ -1012,7 +1110,6 @@ const palettes = [
     marker:"#c28672"
   },
 
-  /* INDIGO */
   {
     accent:"#6673a5",
     dark:"#414d7d",
@@ -1021,7 +1118,6 @@ const palettes = [
     marker:"#7e89b5"
   },
 
-  /* TEAL */
   {
     accent:"#4e8b88",
     dark:"#306461",
@@ -1030,7 +1126,6 @@ const palettes = [
     marker:"#69a09d"
   },
 
-  /* PLUM */
   {
     accent:"#8a668b",
     dark:"#624564",
@@ -1039,7 +1134,6 @@ const palettes = [
     marker:"#9e7da0"
   },
 
-  /* OLIVE */
   {
     accent:"#7c8951",
     dark:"#566133",
@@ -1048,7 +1142,6 @@ const palettes = [
     marker:"#929e69"
   },
 
-  /* DUSTY ROSE */
   {
     accent:"#aa6978",
     dark:"#774654",
@@ -1057,7 +1150,6 @@ const palettes = [
     marker:"#bd8190"
   },
 
-  /* SLATE */
   {
     accent:"#647d89",
     dark:"#405965",
@@ -1066,7 +1158,6 @@ const palettes = [
     marker:"#7d949f"
   },
 
-  /* SAND */
   {
     accent:"#a78a62",
     dark:"#705b3e",
@@ -1079,7 +1170,7 @@ const palettes = [
 
 
 /* =========================================================
-   PROPHETS CONTENT
+   PROPHETS
    ========================================================= */
 
 const prophets = [
@@ -1090,7 +1181,8 @@ arabic:"آدم",
 english:"Adam",
 honorific:"AS",
 glimpse:"Allah taught him the names of all things.",
-reference:"Qur’an 2:31"
+reference:"Qur’an 2:31",
+url:"https://quran.com/2/31"
 },
 
 {
@@ -1099,7 +1191,8 @@ arabic:"إدريس",
 english:"Enoch",
 honorific:"AS",
 glimpse:"Allah raised him to a high position.",
-reference:"Qur’an 19:57"
+reference:"Qur’an 19:57",
+url:"https://quran.com/19/57"
 },
 
 {
@@ -1108,7 +1201,8 @@ arabic:"نوح",
 english:"Noah",
 honorific:"AS",
 glimpse:"Allah commanded him to build the Ark.",
-reference:"Qur’an 11:37"
+reference:"Qur’an 11:37",
+url:"https://quran.com/11/37"
 },
 
 {
@@ -1117,7 +1211,8 @@ arabic:"هود",
 english:"Hud",
 honorific:"AS",
 glimpse:"He called the people of ʿĀd to worship Allah alone.",
-reference:"Qur’an 11:50"
+reference:"Qur’an 11:50",
+url:"https://quran.com/11/50"
 },
 
 {
@@ -1126,7 +1221,8 @@ arabic:"صالح",
 english:"Saleh",
 honorific:"AS",
 glimpse:"Allah gave his people the she-camel as a sign.",
-reference:"Qur’an 7:73"
+reference:"Qur’an 7:73",
+url:"https://quran.com/7/73"
 },
 
 {
@@ -1135,7 +1231,8 @@ arabic:"إبراهيم",
 english:"Abraham",
 honorific:"AS",
 glimpse:"He built the Kaʿbah with his son Ismael (AS).",
-reference:"Qur’an 2:127"
+reference:"Qur’an 2:127",
+url:"https://quran.com/2/127"
 },
 
 {
@@ -1144,7 +1241,8 @@ arabic:"لوط",
 english:"Lot",
 honorific:"AS",
 glimpse:"Allah saved him from a people who committed wicked deeds.",
-reference:"Qur’an 21:74"
+reference:"Qur’an 21:74",
+url:"https://quran.com/21/74"
 },
 
 {
@@ -1153,7 +1251,8 @@ arabic:"إسماعيل",
 english:"Ishmael",
 honorific:"AS",
 glimpse:"He helped his father Ibrāhīm (AS) build the Kaʿbah.",
-reference:"Qur’an 2:127"
+reference:"Qur’an 2:127",
+url:"https://quran.com/2/127"
 },
 
 {
@@ -1161,8 +1260,9 @@ name:"Isḥāq",
 arabic:"إسحاق",
 english:"Isaac",
 honorific:"AS",
-glimpse:"Allah gave glad tidings of him as a righteous prophet.",
-reference:"Qur’an 37:112"
+glimpse:"Allah gave glad tidings of him as a righteous Prophet.",
+reference:"Qur’an 37:112",
+url:"https://quran.com/37/112"
 },
 
 {
@@ -1171,7 +1271,8 @@ arabic:"يعقوب",
 english:"Jacob",
 honorific:"AS",
 glimpse:"He remained patient through his separation from his son Yūsuf (AS).",
-reference:"Qur’an 12:83–86"
+reference:"Qur’an 12:83–86",
+url:"https://quran.com/12/83-86"
 },
 
 {
@@ -1180,7 +1281,8 @@ arabic:"يوسف",
 english:"Joseph",
 honorific:"AS",
 glimpse:"He dreamed of eleven stars, the sun and the moon prostrating to him.",
-reference:"Qur’an 12:4"
+reference:"Qur’an 12:4",
+url:"https://quran.com/12/4"
 },
 
 {
@@ -1189,7 +1291,8 @@ arabic:"أيوب",
 english:"Job",
 honorific:"AS",
 glimpse:"He called upon Allah during a time of great hardship.",
-reference:"Qur’an 21:83"
+reference:"Qur’an 21:83",
+url:"https://quran.com/21/83"
 },
 
 {
@@ -1198,7 +1301,8 @@ arabic:"شعيب",
 english:"Shuaib",
 honorific:"AS",
 glimpse:"He called his people to give full measure and weight.",
-reference:"Qur’an 7:85"
+reference:"Qur’an 7:85",
+url:"https://quran.com/7/85"
 },
 
 {
@@ -1207,7 +1311,8 @@ arabic:"موسى",
 english:"Moses",
 honorific:"AS",
 glimpse:"Allah spoke to him from the blessed valley.",
-reference:"Qur’an 28:30"
+reference:"Qur’an 28:30",
+url:"https://quran.com/28/30"
 },
 
 {
@@ -1216,7 +1321,8 @@ arabic:"هارون",
 english:"Aaron",
 honorific:"AS",
 glimpse:"Allah appointed him to support his brother Mūsā (AS).",
-reference:"Qur’an 20:29–36"
+reference:"Qur’an 20:29–36",
+url:"https://quran.com/20/29-36"
 },
 
 {
@@ -1225,7 +1331,8 @@ arabic:"ذو الكفل",
 english:"Dhul-Kifl",
 honorific:"AS",
 glimpse:"Allah mentions him among those who were steadfast.",
-reference:"Qur’an 21:85"
+reference:"Qur’an 21:85",
+url:"https://quran.com/21/85"
 },
 
 {
@@ -1234,7 +1341,8 @@ arabic:"داوود",
 english:"David",
 honorific:"AS",
 glimpse:"Allah made iron pliable for him.",
-reference:"Qur’an 34:10"
+reference:"Qur’an 34:10",
+url:"https://quran.com/34/10"
 },
 
 {
@@ -1243,7 +1351,8 @@ arabic:"سليمان",
 english:"Solomon",
 honorific:"AS",
 glimpse:"Allah taught him the communication of birds.",
-reference:"Qur’an 27:16"
+reference:"Qur’an 27:16",
+url:"https://quran.com/27/16"
 },
 
 {
@@ -1252,7 +1361,8 @@ arabic:"إلياس",
 english:"Elijah",
 honorific:"AS",
 glimpse:"He called his people to worship Allah instead of Baʿl.",
-reference:"Qur’an 37:123–126"
+reference:"Qur’an 37:123–126",
+url:"https://quran.com/37/123-126"
 },
 
 {
@@ -1261,7 +1371,8 @@ arabic:"اليسع",
 english:"Elisha",
 honorific:"AS",
 glimpse:"Allah mentions him among His chosen servants.",
-reference:"Qur’an 38:48"
+reference:"Qur’an 38:48",
+url:"https://quran.com/38/48"
 },
 
 {
@@ -1270,7 +1381,8 @@ arabic:"يونس",
 english:"Jonah",
 honorific:"AS",
 glimpse:"He called upon Allah from within the darknesses.",
-reference:"Qur’an 21:87"
+reference:"Qur’an 21:87",
+url:"https://quran.com/21/87"
 },
 
 {
@@ -1279,7 +1391,8 @@ arabic:"زكريا",
 english:"Zechariah",
 honorific:"AS",
 glimpse:"He prayed to Allah for righteous offspring.",
-reference:"Qur’an 3:38"
+reference:"Qur’an 3:38",
+url:"https://quran.com/3/38"
 },
 
 {
@@ -1288,7 +1401,8 @@ arabic:"يحيى",
 english:"John",
 honorific:"AS",
 glimpse:"Allah gave him wisdom while he was still a child.",
-reference:"Qur’an 19:12"
+reference:"Qur’an 19:12",
+url:"https://quran.com/19/12"
 },
 
 {
@@ -1297,7 +1411,8 @@ arabic:"عيسى",
 english:"Jesus",
 honorific:"AS",
 glimpse:"He was born miraculously to Maryam without a father.",
-reference:"Qur’an 3:45–47"
+reference:"Qur’an 3:45–47",
+url:"https://quran.com/3/45-47"
 },
 
 {
@@ -1305,8 +1420,9 @@ name:"Muḥammad",
 arabic:"محمد",
 english:"Muhammad",
 honorific:"SAW",
-glimpse:"Allah describes him as His Messenger and the seal of the prophets.",
-reference:"Qur’an 33:40"
+glimpse:"Allah describes him as His Messenger and the seal of the Prophets.",
+reference:"Qur’an 33:40",
+url:"https://quran.com/33/40"
 }
 
 ];
@@ -1335,6 +1451,14 @@ function closeOtherCards(current) {
           "false"
         );
 
+        const text =
+          card.querySelector(".reveal-text");
+
+        if (text) {
+          text.textContent =
+            "TAP TO REVEAL";
+        }
+
       }
 
     });
@@ -1359,6 +1483,18 @@ function toggleCard(card) {
     String(!isOpen)
   );
 
+  const text =
+    card.querySelector(".reveal-text");
+
+  if (text) {
+
+    text.textContent =
+      !isOpen
+        ? "CLOSE"
+        : "TAP TO REVEAL";
+
+  }
+
 }
 
 
@@ -1375,8 +1511,6 @@ prophets.forEach((prophet,index) => {
   step.className =
     `step ${index % 2 === 0 ? "left" : "right"}`;
 
-
-  /* APPLY THIS PROPHET'S COLOUR */
 
   step.style.setProperty(
     "--accent",
@@ -1404,8 +1538,6 @@ prophets.forEach((prophet,index) => {
   );
 
 
-  /* NUMBER MARKER */
-
   const marker =
     document.createElement("div");
 
@@ -1423,8 +1555,6 @@ prophets.forEach((prophet,index) => {
   `;
 
 
-  /* BRANCH */
-
   const branch =
     document.createElement("span");
 
@@ -1435,8 +1565,6 @@ prophets.forEach((prophet,index) => {
     "true"
   );
 
-
-  /* CARD */
 
   const card =
     document.createElement("div");
@@ -1503,7 +1631,7 @@ prophets.forEach((prophet,index) => {
 
       <div class="reveal">
 
-        <span>
+        <span class="reveal-text">
           TAP TO REVEAL
         </span>
 
@@ -1539,7 +1667,13 @@ prophets.forEach((prophet,index) => {
         </p>
 
 
-        <div class="reference">
+        <a
+          class="reference"
+          href="${prophet.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Read ${prophet.reference} on Quran.com"
+        >
 
           <span
             class="book"
@@ -1552,7 +1686,11 @@ prophets.forEach((prophet,index) => {
             ${prophet.reference}
           </span>
 
-        </div>
+          <span aria-hidden="true">
+            ↗
+          </span>
+
+        </a>
 
       </div>
 
@@ -1563,13 +1701,29 @@ prophets.forEach((prophet,index) => {
 
   card.addEventListener(
     "click",
-    () => toggleCard(card)
+    event => {
+
+      if (
+        event.target.closest(".reference")
+      ) {
+        return;
+      }
+
+      toggleCard(card);
+
+    }
   );
 
 
   card.addEventListener(
     "keydown",
     event => {
+
+      if (
+        event.target.closest(".reference")
+      ) {
+        return;
+      }
 
       if (
         event.key === "Enter" ||
