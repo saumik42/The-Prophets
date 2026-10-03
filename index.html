@@ -6,397 +6,423 @@
 <title>The Prophets | AKS Ilm</title>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
+* { box-sizing: border-box; }
 
-  html {
-    scroll-behavior: smooth;
-  }
+html { scroll-behavior: smooth; }
 
-  body {
-    margin: 0;
-    background: #ffffff;
-    color: #243447;
-    font-family: Arial, Helvetica, sans-serif;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 10% 8%, rgba(49,104,158,.055), transparent 25%),
+    radial-gradient(circle at 90% 40%, rgba(49,104,158,.04), transparent 24%),
+    #fff;
+  color: #243447;
+}
+
+.app {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px 16px 60px;
+}
+
+/* INTRO */
+
+.intro {
+  max-width: 700px;
+  margin: 0 auto 46px;
+  text-align: center;
+}
+
+.intro h1 {
+  margin: 0 0 10px;
+  color: #173f6d;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.intro p {
+  margin: 0 auto;
+  max-width: 670px;
+  color: #667381;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.intro-accent {
+  width: 46px;
+  height: 3px;
+  margin: 17px auto 0;
+  border-radius: 99px;
+  background: linear-gradient(90deg,#b9cada,#315f8b,#b9cada);
+}
+
+/* JOURNEY */
+
+.journey {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4px 0 22px;
+}
+
+.step {
+  position: relative;
+  width: 61%;
+  margin-bottom: 58px;
+  z-index: 2;
+}
+
+.step.left { margin-left: 2%; }
+.step.right { margin-left: 37%; }
+
+/* CONNECTOR AREA */
+
+.connector {
+  position: absolute;
+  width: 40%;
+  height: 68px;
+  bottom: -63px;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.step.left .connector {
+  left: 78%;
+}
+
+.step.right .connector {
+  right: 78%;
+}
+
+/* SVG PATH */
+
+.connector svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.path-line {
+  fill: none;
+  stroke: #9fb7cc;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: .72;
+}
+
+/* JOURNEY WAYPOINT */
+
+.waypoint {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  bottom: -36px;
+  background: #fff;
+  border: 2px solid #8ba9c3;
+  transform: rotate(45deg);
+  z-index: 3;
+}
+
+.step.left .waypoint { right: -15%; }
+.step.right .waypoint { left: -15%; }
+
+/* CARD */
+
+.prophet-card {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 21px 23px 18px;
+
+  background:
+    linear-gradient(145deg, rgba(247,250,253,.98), rgba(255,255,255,1));
+
+  border: 1px solid #d1dee9;
+  border-radius: 20px;
+
+  box-shadow:
+    0 5px 18px rgba(29,67,105,.07),
+    inset 0 1px 0 rgba(255,255,255,.9);
+
+  cursor: pointer;
+  overflow: hidden;
+
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .prophet-card:hover {
+    transform: translateY(-3px);
+    border-color: #9fb8cf;
+    box-shadow: 0 9px 24px rgba(29,67,105,.12);
   }
+}
+
+.prophet-card:focus-visible {
+  outline: 3px solid rgba(47,109,168,.22);
+  outline-offset: 4px;
+}
+
+/* NUMBER */
+
+.step-number {
+  position: absolute;
+  top: 15px;
+  left: 17px;
+
+  color: #91a8bc;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* GEOMETRIC CORNER DETAIL */
+
+.geo {
+  position: absolute;
+  top: -27px;
+  right: -27px;
+  width: 86px;
+  height: 86px;
+  opacity: .36;
+  pointer-events: none;
+}
+
+.geo::before,
+.geo::after {
+  content: "";
+  position: absolute;
+  border: 1px solid #aec3d5;
+  transform: rotate(45deg);
+}
+
+.geo::before {
+  width: 55px;
+  height: 55px;
+  top: 15px;
+  left: 15px;
+}
+
+.geo::after {
+  width: 33px;
+  height: 33px;
+  top: 26px;
+  left: 26px;
+}
+
+/* MAIN */
+
+.main-content { text-align: center; }
+
+.prophet-name {
+  margin: 0;
+  color: #173f6d;
+  font-size: 21px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.arabic-name {
+  margin-top: 7px;
+  color: #315879;
+  font-size: 30px;
+  line-height: 1.35;
+  direction: rtl;
+}
+
+.english-name {
+  margin-top: 1px;
+  color: #748291;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.tap-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+
+  color: #52779b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .25px;
+}
+
+.chevron {
+  display: inline-block;
+  font-size: 14px;
+  transition: transform .3s ease;
+}
+
+/* DETAILS */
+
+.details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+
+  transition:
+    max-height .4s ease,
+    opacity .3s ease,
+    margin-top .3s ease;
+}
+
+.prophet-card.open {
+  border-color: #8eacc7;
+  background:
+    linear-gradient(145deg,#f5f9fc,#ffffff);
+
+  box-shadow:
+    0 10px 28px rgba(29,67,105,.14),
+    0 0 0 3px rgba(73,126,176,.045);
+}
+
+.prophet-card.open .details {
+  max-height: 280px;
+  opacity: 1;
+  margin-top: 18px;
+}
+
+.prophet-card.open .chevron {
+  transform: rotate(180deg);
+}
+
+.details-inner {
+  padding: 14px 15px;
+  text-align: left;
+
+  background: rgba(232,240,247,.52);
+  border: 1px solid #dce7f0;
+  border-radius: 12px;
+}
+
+.glimpse-heading {
+  margin: 0 0 6px;
+  color: #526d87;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.glimpse-text {
+  margin: 0;
+  color: #33475a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.reference {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 6px 9px;
+
+  background: #fff;
+  border: 1px solid #d4e1eb;
+  border-radius: 8px;
+
+  color: #2f6da8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* END */
+
+.journey-end {
+  text-align: center;
+  margin-top: 0;
+  color: #7898b4;
+}
+
+.end-diamond {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #7898b4;
+  transform: rotate(45deg);
+}
+
+/* MOBILE */
+
+@media (max-width:600px) {
 
   .app {
-    width: 100%;
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 24px 14px 55px;
+    padding: 22px 10px 44px;
   }
 
-  /* =========================
-     INTRO
-     ========================= */
-
   .intro {
-    max-width: 680px;
-    margin: 0 auto 38px;
-    text-align: center;
+    margin-bottom: 37px;
   }
 
   .intro h1 {
-    margin: 0 0 10px;
-    color: #173f6d;
-    font-size: 30px;
-    line-height: 1.2;
+    font-size: 27px;
   }
 
   .intro p {
-    margin: 0;
-    color: #667381;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  /* =========================
-     JOURNEY
-     ========================= */
-
-  .journey {
-    position: relative;
-    width: 100%;
-    max-width: 690px;
-    margin: 0 auto;
-    padding: 4px 0 20px;
+    font-size: 14px;
   }
 
   .step {
-    position: relative;
-    width: 62%;
-    margin-bottom: 48px;
-    z-index: 1;
+    width: 87%;
+    margin-bottom: 52px;
   }
 
-  .step.left {
-    margin-left: 3%;
+  .step.left { margin-left: 1%; }
+  .step.right { margin-left: 12%; }
+
+  .connector {
+    width: 20%;
+    height: 62px;
+    bottom: -57px;
   }
 
-  .step.right {
-    margin-left: 35%;
+  .step.left .connector { left: 91%; }
+  .step.right .connector { right: 91%; }
+
+  .waypoint {
+    bottom: -32px;
   }
 
-  /* =========================
-     CURVED DOTTED TRAIL
-     ========================= */
-
-  .trail {
-    position: absolute;
-    width: 32%;
-    height: 55px;
-    bottom: -51px;
-    pointer-events: none;
-    opacity: 0.9;
-    z-index: 0;
-  }
-
-  .step.left .trail {
-    right: -24%;
-    border-right: 2px dotted #aebfd0;
-    border-bottom: 2px dotted #aebfd0;
-    border-bottom-right-radius: 60px;
-  }
-
-  .step.right .trail {
-    left: -24%;
-    border-left: 2px dotted #aebfd0;
-    border-bottom: 2px dotted #aebfd0;
-    border-bottom-left-radius: 60px;
-  }
-
-  /* =========================
-     PROPHET TILE
-     ========================= */
+  .step.left .waypoint { right: -7%; }
+  .step.right .waypoint { left: -7%; }
 
   .prophet-card {
-    position: relative;
-    width: 100%;
     min-height: 145px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: 20px 22px 17px;
-
-    background: #ffffff;
-    border: 1px solid #d7e1eb;
+    padding: 20px 17px 17px;
     border-radius: 18px;
-
-    box-shadow: 0 3px 12px rgba(24, 63, 105, 0.07);
-
-    cursor: pointer;
-    overflow: hidden;
-
-    transition:
-      transform 0.22s ease,
-      box-shadow 0.22s ease,
-      border-color 0.22s ease;
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .prophet-card:hover {
-      transform: translateY(-3px);
-      border-color: #aebfd1;
-      box-shadow: 0 7px 18px rgba(24, 63, 105, 0.11);
-    }
+  .prophet-name { font-size: 20px; }
+  .arabic-name { font-size: 29px; }
+
+  .step-number {
+    top: 13px;
+    left: 14px;
   }
+}
 
-  .prophet-card:focus-visible {
-    outline: 3px solid rgba(43, 102, 164, 0.25);
-    outline-offset: 3px;
-  }
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
 
-  /* =========================
-     SUBTLE CORNER MOTIF
-     ========================= */
-
-  .motif {
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    top: -15px;
-    right: -15px;
-
-    border: 1px solid #dce6ef;
-    transform: rotate(45deg);
-
-    pointer-events: none;
-  }
-
-  .motif::after {
-    content: "";
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    top: 10px;
-    left: 10px;
-    border: 1px solid #e4ebf2;
-  }
-
-  /* =========================
-     COMPACT STATE
-     ========================= */
-
-  .main-content {
-    text-align: center;
-  }
-
-  .prophet-name {
-    margin: 0;
-    color: #173f6d;
-    font-size: 21px;
-    line-height: 1.3;
-    font-weight: 700;
-  }
-
-  .arabic-name {
-    margin-top: 7px;
-    color: #315879;
-    font-size: 29px;
-    line-height: 1.35;
-    direction: rtl;
-  }
-
-  .english-name {
-    margin-top: 1px;
-    color: #788491;
-    font-size: 14px;
-    font-style: italic;
-  }
-
-  .tap-label {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-
-    margin-top: 13px;
-
-    color: #55799d;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.25px;
-  }
-
+  .prophet-card,
+  .details,
   .chevron {
-    display: inline-block;
-    font-size: 13px;
-    transition: transform 0.28s ease;
+    transition:none;
   }
-
-  /* =========================
-     EXPANDED STATE
-     ========================= */
-
-  .details {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    margin-top: 0;
-
-    transition:
-      max-height 0.4s ease,
-      opacity 0.3s ease,
-      margin-top 0.3s ease;
-  }
-
-  .prophet-card.open {
-    border-color: #abc0d4;
-    box-shadow: 0 8px 20px rgba(24, 63, 105, 0.11);
-  }
-
-  .prophet-card.open .details {
-    max-height: 250px;
-    opacity: 1;
-    margin-top: 17px;
-  }
-
-  .prophet-card.open .chevron {
-    transform: rotate(180deg);
-  }
-
-  .details-inner {
-    padding-top: 15px;
-    border-top: 1px solid #e3eaf1;
-    text-align: left;
-  }
-
-  .glimpse-heading {
-    margin: 0 0 6px;
-    color: #647485;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-  }
-
-  .glimpse-text {
-    margin: 0;
-    color: #334155;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .reference {
-    margin-top: 12px;
-    color: #2f6da8;
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  /* =========================
-     END OF JOURNEY
-     ========================= */
-
-  .journey-end {
-    width: 100%;
-    margin-top: 2px;
-    text-align: center;
-    color: #9aabba;
-    font-size: 18px;
-  }
-
-  /* =========================
-     MOBILE
-     ========================= */
-
-  @media (max-width: 600px) {
-    .app {
-      padding: 22px 10px 42px;
-    }
-
-    .intro {
-      margin-bottom: 32px;
-      padding: 0 5px;
-    }
-
-    .intro h1 {
-      font-size: 26px;
-    }
-
-    .intro p {
-      font-size: 14px;
-    }
-
-    .journey {
-      max-width: 100%;
-    }
-
-    .step {
-      width: 88%;
-      margin-bottom: 43px;
-    }
-
-    .step.left {
-      margin-left: 1%;
-    }
-
-    .step.right {
-      margin-left: 11%;
-    }
-
-    .trail {
-      width: 20%;
-      height: 50px;
-      bottom: -47px;
-    }
-
-    .step.left .trail {
-      right: -10%;
-    }
-
-    .step.right .trail {
-      left: -10%;
-    }
-
-    .prophet-card {
-      min-height: 140px;
-      padding: 18px 16px 16px;
-      border-radius: 16px;
-    }
-
-    .prophet-name {
-      font-size: 20px;
-    }
-
-    .arabic-name {
-      font-size: 28px;
-    }
-
-    .english-name {
-      font-size: 14px;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .step {
-      width: 91%;
-    }
-
-    .step.left {
-      margin-left: 0;
-    }
-
-    .step.right {
-      margin-left: 9%;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    .prophet-card,
-    .details,
-    .chevron {
-      transition: none;
-    }
-  }
+}
 </style>
 </head>
 
@@ -404,339 +430,163 @@
 
 <main class="app">
 
-  <header class="intro">
-    <h1>🌿 The Prophets</h1>
+<header class="intro">
+  <h1>🌿 The Prophets</h1>
 
-    <p>
-      Journey through the 25 prophets mentioned by name in the Qur’an.
-      Tap each prophet to reveal a brief glimpse from their story and
-      its Qur’anic reference.
-    </p>
-  </header>
+  <p>
+    Journey through the 25 prophets mentioned by name in the Qur’an.
+    Tap each prophet to reveal a brief glimpse from their story and
+    its Qur’anic reference.
+  </p>
 
-  <section
-    class="journey"
-    id="journey"
-    aria-label="The Prophets Journey"
-  ></section>
+  <div class="intro-accent" aria-hidden="true"></div>
+</header>
 
-  <div class="journey-end" aria-hidden="true">◇</div>
+<section
+  class="journey"
+  id="journey"
+  aria-label="The Prophets Journey">
+</section>
+
+<div class="journey-end" aria-hidden="true">
+  <span class="end-diamond"></span>
+</div>
 
 </main>
 
 <script>
-  const prophets = [
-    {
-      name: "Ādam",
-      arabic: "آدم",
-      english: "Adam",
-      honorific: "AS",
-      glimpse: "Allah taught him the names of all things.",
-      reference: "Qur’an 2:31"
-    },
-    {
-      name: "Idrīs",
-      arabic: "إدريس",
-      english: "Enoch",
-      honorific: "AS",
-      glimpse: "Allah raised him to a high position.",
-      reference: "Qur’an 19:57"
-    },
-    {
-      name: "Nūḥ",
-      arabic: "نوح",
-      english: "Noah",
-      honorific: "AS",
-      glimpse: "Allah commanded him to build the Ark.",
-      reference: "Qur’an 11:37"
-    },
-    {
-      name: "Hūd",
-      arabic: "هود",
-      english: "Hud",
-      honorific: "AS",
-      glimpse: "He called the people of ʿĀd to worship Allah alone.",
-      reference: "Qur’an 11:50"
-    },
-    {
-      name: "Saleh",
-      arabic: "صالح",
-      english: "Saleh",
-      honorific: "AS",
-      glimpse: "Allah gave his people the she-camel as a sign.",
-      reference: "Qur’an 7:73"
-    },
-    {
-      name: "Ibrāhīm",
-      arabic: "إبراهيم",
-      english: "Abraham",
-      honorific: "AS",
-      glimpse: "He built the Kaʿbah with his son Ismael (AS).",
-      reference: "Qur’an 2:127"
-    },
-    {
-      name: "Lūṭ",
-      arabic: "لوط",
-      english: "Lot",
-      honorific: "AS",
-      glimpse: "Allah saved him from a people who committed wicked deeds.",
-      reference: "Qur’an 21:74"
-    },
-    {
-      name: "Ismael",
-      arabic: "إسماعيل",
-      english: "Ishmael",
-      honorific: "AS",
-      glimpse: "He helped his father Ibrāhīm (AS) build the Kaʿbah.",
-      reference: "Qur’an 2:127"
-    },
-    {
-      name: "Isḥāq",
-      arabic: "إسحاق",
-      english: "Isaac",
-      honorific: "AS",
-      glimpse: "Allah gave glad tidings of him as a righteous prophet.",
-      reference: "Qur’an 37:112"
-    },
-    {
-      name: "Yaʿqūb",
-      arabic: "يعقوب",
-      english: "Jacob",
-      honorific: "AS",
-      glimpse: "He remained patient through his separation from his son Yūsuf (AS).",
-      reference: "Qur’an 12:83–86"
-    },
-    {
-      name: "Yūsuf",
-      arabic: "يوسف",
-      english: "Joseph",
-      honorific: "AS",
-      glimpse: "He dreamed of eleven stars, the sun and the moon prostrating to him.",
-      reference: "Qur’an 12:4"
-    },
-    {
-      name: "Ayyūb",
-      arabic: "أيوب",
-      english: "Job",
-      honorific: "AS",
-      glimpse: "He called upon Allah during a time of great hardship.",
-      reference: "Qur’an 21:83"
-    },
-    {
-      name: "Shuaib",
-      arabic: "شعيب",
-      english: "Shuaib",
-      honorific: "AS",
-      glimpse: "He called his people to give full measure and weight.",
-      reference: "Qur’an 7:85"
-    },
-    {
-      name: "Mūsā",
-      arabic: "موسى",
-      english: "Moses",
-      honorific: "AS",
-      glimpse: "Allah spoke to him from the blessed valley.",
-      reference: "Qur’an 28:30"
-    },
-    {
-      name: "Hārūn",
-      arabic: "هارون",
-      english: "Aaron",
-      honorific: "AS",
-      glimpse: "Allah appointed him to support his brother Mūsā (AS).",
-      reference: "Qur’an 20:29–36"
-    },
-    {
-      name: "Dhul-Kifl",
-      arabic: "ذو الكفل",
-      english: "Dhul-Kifl",
-      honorific: "AS",
-      glimpse: "Allah mentions him among those who were steadfast.",
-      reference: "Qur’an 21:85"
-    },
-    {
-      name: "Dāwūd",
-      arabic: "داوود",
-      english: "David",
-      honorific: "AS",
-      glimpse: "Allah made iron pliable for him.",
-      reference: "Qur’an 34:10"
-    },
-    {
-      name: "Sulaiman",
-      arabic: "سليمان",
-      english: "Solomon",
-      honorific: "AS",
-      glimpse: "Allah taught him the communication of birds.",
-      reference: "Qur’an 27:16"
-    },
-    {
-      name: "Ilyās",
-      arabic: "إلياس",
-      english: "Elijah",
-      honorific: "AS",
-      glimpse: "He called his people to worship Allah instead of Baʿl.",
-      reference: "Qur’an 37:123–126"
-    },
-    {
-      name: "Al-Yasaʿ",
-      arabic: "اليسع",
-      english: "Elisha",
-      honorific: "AS",
-      glimpse: "Allah mentions him among His chosen servants.",
-      reference: "Qur’an 38:48"
-    },
-    {
-      name: "Yūnus",
-      arabic: "يونس",
-      english: "Jonah",
-      honorific: "AS",
-      glimpse: "He called upon Allah from within the darknesses.",
-      reference: "Qur’an 21:87"
-    },
-    {
-      name: "Zakariya",
-      arabic: "زكريا",
-      english: "Zechariah",
-      honorific: "AS",
-      glimpse: "He prayed to Allah for righteous offspring.",
-      reference: "Qur’an 3:38"
-    },
-    {
-      name: "Yaḥyā",
-      arabic: "يحيى",
-      english: "John",
-      honorific: "AS",
-      glimpse: "Allah gave him wisdom while he was still a child.",
-      reference: "Qur’an 19:12"
-    },
-    {
-      name: "ʿĪsā",
-      arabic: "عيسى",
-      english: "Jesus",
-      honorific: "AS",
-      glimpse: "He was born miraculously to Maryam without a father.",
-      reference: "Qur’an 3:45–47"
-    },
-    {
-      name: "Muḥammad",
-      arabic: "محمد",
-      english: "Muhammad",
-      honorific: "SAW",
-      glimpse: "Allah describes him as His Messenger and the seal of the prophets.",
-      reference: "Qur’an 33:40"
-    }
-  ];
+const prophets = [
+{name:"Ādam",arabic:"آدم",english:"Adam",honorific:"AS",glimpse:"Allah taught him the names of all things.",reference:"Qur’an 2:31"},
+{name:"Idrīs",arabic:"إدريس",english:"Enoch",honorific:"AS",glimpse:"Allah raised him to a high position.",reference:"Qur’an 19:57"},
+{name:"Nūḥ",arabic:"نوح",english:"Noah",honorific:"AS",glimpse:"Allah commanded him to build the Ark.",reference:"Qur’an 11:37"},
+{name:"Hūd",arabic:"هود",english:"Hud",honorific:"AS",glimpse:"He called the people of ʿĀd to worship Allah alone.",reference:"Qur’an 11:50"},
+{name:"Saleh",arabic:"صالح",english:"Saleh",honorific:"AS",glimpse:"Allah gave his people the she-camel as a sign.",reference:"Qur’an 7:73"},
+{name:"Ibrāhīm",arabic:"إبراهيم",english:"Abraham",honorific:"AS",glimpse:"He built the Kaʿbah with his son Ismael (AS).",reference:"Qur’an 2:127"},
+{name:"Lūṭ",arabic:"لوط",english:"Lot",honorific:"AS",glimpse:"Allah saved him from a people who committed wicked deeds.",reference:"Qur’an 21:74"},
+{name:"Ismael",arabic:"إسماعيل",english:"Ishmael",honorific:"AS",glimpse:"He helped his father Ibrāhīm (AS) build the Kaʿbah.",reference:"Qur’an 2:127"},
+{name:"Isḥāq",arabic:"إسحاق",english:"Isaac",honorific:"AS",glimpse:"Allah gave glad tidings of him as a righteous prophet.",reference:"Qur’an 37:112"},
+{name:"Yaʿqūb",arabic:"يعقوب",english:"Jacob",honorific:"AS",glimpse:"He remained patient through his separation from his son Yūsuf (AS).",reference:"Qur’an 12:83–86"},
+{name:"Yūsuf",arabic:"يوسف",english:"Joseph",honorific:"AS",glimpse:"He dreamed of eleven stars, the sun and the moon prostrating to him.",reference:"Qur’an 12:4"},
+{name:"Ayyūb",arabic:"أيوب",english:"Job",honorific:"AS",glimpse:"He called upon Allah during a time of great hardship.",reference:"Qur’an 21:83"},
+{name:"Shuaib",arabic:"شعيب",english:"Shuaib",honorific:"AS",glimpse:"He called his people to give full measure and weight.",reference:"Qur’an 7:85"},
+{name:"Mūsā",arabic:"موسى",english:"Moses",honorific:"AS",glimpse:"Allah spoke to him from the blessed valley.",reference:"Qur’an 28:30"},
+{name:"Hārūn",arabic:"هارون",english:"Aaron",honorific:"AS",glimpse:"Allah appointed him to support his brother Mūsā (AS).",reference:"Qur’an 20:29–36"},
+{name:"Dhul-Kifl",arabic:"ذو الكفل",english:"Dhul-Kifl",honorific:"AS",glimpse:"Allah mentions him among those who were steadfast.",reference:"Qur’an 21:85"},
+{name:"Dāwūd",arabic:"داوود",english:"David",honorific:"AS",glimpse:"Allah made iron pliable for him.",reference:"Qur’an 34:10"},
+{name:"Sulaiman",arabic:"سليمان",english:"Solomon",honorific:"AS",glimpse:"Allah taught him the communication of birds.",reference:"Qur’an 27:16"},
+{name:"Ilyās",arabic:"إلياس",english:"Elijah",honorific:"AS",glimpse:"He called his people to worship Allah instead of Baʿl.",reference:"Qur’an 37:123–126"},
+{name:"Al-Yasaʿ",arabic:"اليسع",english:"Elisha",honorific:"AS",glimpse:"Allah mentions him among His chosen servants.",reference:"Qur’an 38:48"},
+{name:"Yūnus",arabic:"يونس",english:"Jonah",honorific:"AS",glimpse:"He called upon Allah from within the darknesses.",reference:"Qur’an 21:87"},
+{name:"Zakariya",arabic:"زكريا",english:"Zechariah",honorific:"AS",glimpse:"He prayed to Allah for righteous offspring.",reference:"Qur’an 3:38"},
+{name:"Yaḥyā",arabic:"يحيى",english:"John",honorific:"AS",glimpse:"Allah gave him wisdom while he was still a child.",reference:"Qur’an 19:12"},
+{name:"ʿĪsā",arabic:"عيسى",english:"Jesus",honorific:"AS",glimpse:"He was born miraculously to Maryam without a father.",reference:"Qur’an 3:45–47"},
+{name:"Muḥammad",arabic:"محمد",english:"Muhammad",honorific:"SAW",glimpse:"Allah describes him as His Messenger and the seal of the prophets.",reference:"Qur’an 33:40"}
+];
 
-  const journey = document.getElementById("journey");
+const journey = document.getElementById("journey");
 
-  function closeOtherCards(currentCard) {
-    document.querySelectorAll(".prophet-card.open").forEach(card => {
-      if (card !== currentCard) {
-        card.classList.remove("open");
-        card.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
-
-  function toggleCard(card) {
-    const isOpen = card.classList.contains("open");
-
-    closeOtherCards(card);
-
-    if (isOpen) {
+function closeOthers(current) {
+  document.querySelectorAll(".prophet-card.open").forEach(card => {
+    if (card !== current) {
       card.classList.remove("open");
-      card.setAttribute("aria-expanded", "false");
-    } else {
-      card.classList.add("open");
-      card.setAttribute("aria-expanded", "true");
+      card.setAttribute("aria-expanded","false");
     }
+  });
+}
+
+function toggle(card) {
+  const open = card.classList.contains("open");
+  closeOthers(card);
+  card.classList.toggle("open", !open);
+  card.setAttribute("aria-expanded", String(!open));
+}
+
+prophets.forEach((p,index) => {
+
+  const step = document.createElement("div");
+  step.className = `step ${index % 2 === 0 ? "left" : "right"}`;
+
+  const card = document.createElement("div");
+  card.className = "prophet-card";
+  card.tabIndex = 0;
+  card.setAttribute("role","button");
+  card.setAttribute("aria-expanded","false");
+
+  const number = String(index + 1).padStart(2,"0");
+
+  card.innerHTML = `
+    <span class="step-number">${number}</span>
+    <span class="geo" aria-hidden="true"></span>
+
+    <div class="main-content">
+      <h2 class="prophet-name">${p.name} (${p.honorific})</h2>
+      <div class="arabic-name" lang="ar">${p.arabic}</div>
+      <div class="english-name">${p.english}</div>
+
+      <div class="tap-label">
+        <span>Tap to reveal</span>
+        <span class="chevron">⌄</span>
+      </div>
+    </div>
+
+    <div class="details">
+      <div class="details-inner">
+        <p class="glimpse-heading">A Glimpse</p>
+        <p class="glimpse-text">${p.glimpse}</p>
+        <div class="reference">📖 ${p.reference}</div>
+      </div>
+    </div>
+  `;
+
+  card.addEventListener("click", () => toggle(card));
+
+  card.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggle(card);
+    }
+  });
+
+  step.appendChild(card);
+
+  if (index < prophets.length - 1) {
+
+    const connector = document.createElement("div");
+    connector.className = "connector";
+
+    /*
+      Different curve direction depending on which side
+      of the journey we're travelling from.
+    */
+
+    connector.innerHTML = index % 2 === 0
+      ? `
+        <svg viewBox="0 0 160 70" preserveAspectRatio="none">
+          <path
+            class="path-line"
+            d="M 0 4 C 90 4, 70 66, 160 66"
+          />
+        </svg>
+      `
+      : `
+        <svg viewBox="0 0 160 70" preserveAspectRatio="none">
+          <path
+            class="path-line"
+            d="M 160 4 C 70 4, 90 66, 0 66"
+          />
+        </svg>
+      `;
+
+    const waypoint = document.createElement("span");
+    waypoint.className = "waypoint";
+    waypoint.setAttribute("aria-hidden","true");
+
+    step.appendChild(connector);
+    step.appendChild(waypoint);
   }
 
-  prophets.forEach((prophet, index) => {
-    const step = document.createElement("div");
-
-    step.className =
-      "step " + (index % 2 === 0 ? "left" : "right");
-
-    const card = document.createElement("div");
-
-    card.className = "prophet-card";
-    card.setAttribute("role", "button");
-    card.setAttribute("tabindex", "0");
-    card.setAttribute("aria-expanded", "false");
-    card.setAttribute(
-      "aria-label",
-      `${prophet.name}, ${prophet.english}. Tap to reveal more.`
-    );
-
-    card.innerHTML = `
-      <span class="motif" aria-hidden="true"></span>
-
-      <div class="main-content">
-
-        <h2 class="prophet-name">
-          ${prophet.name} (${prophet.honorific})
-        </h2>
-
-        <div class="arabic-name" lang="ar">
-          ${prophet.arabic}
-        </div>
-
-        <div class="english-name">
-          ${prophet.english}
-        </div>
-
-        <div class="tap-label">
-          <span>Tap to reveal</span>
-          <span class="chevron" aria-hidden="true">⌄</span>
-        </div>
-
-      </div>
-
-      <div class="details">
-
-        <div class="details-inner">
-
-          <p class="glimpse-heading">
-            A Glimpse
-          </p>
-
-          <p class="glimpse-text">
-            ${prophet.glimpse}
-          </p>
-
-          <div class="reference">
-            📖 ${prophet.reference}
-          </div>
-
-        </div>
-
-      </div>
-    `;
-
-    card.addEventListener("click", () => {
-      toggleCard(card);
-    });
-
-    card.addEventListener("keydown", event => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        toggleCard(card);
-      }
-    });
-
-    step.appendChild(card);
-
-    if (index < prophets.length - 1) {
-      const trail = document.createElement("span");
-      trail.className = "trail";
-      trail.setAttribute("aria-hidden", "true");
-      step.appendChild(trail);
-    }
-
-    journey.appendChild(step);
-  });
+  journey.appendChild(step);
+});
 </script>
 
 </body>
